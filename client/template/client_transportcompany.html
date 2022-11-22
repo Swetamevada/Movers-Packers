@@ -1,0 +1,53 @@
+{% extends 'header_footer.html' %}
+{% load static %}
+{% block content %}
+    <!-- Content -->
+    <div class="page-content bg-white">
+        <!-- inner page banner -->
+        <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({% static 'images/main-slider/slide5.jpg' %});">
+            <div class="container">
+                <div class="dez-bnr-inr-entry">
+                    <h1 class="text-white">TransportCompany</h1>
+                </div>
+            </div>
+        </div>
+        <!-- inner page banner END -->
+        <!-- Breadcrumb row -->
+        <div class="breadcrumb-row">
+            <div class="container">
+                <ul class="list-inline">
+                    <li><a href="/client/Home/">Home</a></li>
+                    <li>TransportCompany</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Breadcrumb row END -->
+        <!-- contact area -->
+        <div class="content-area">
+            <!-- Product -->
+            <div class="container">
+
+                <div class="row">
+                    {% for val in t2 %}
+                    <div class="col-lg-3 col-md-4 col-sm-6 m-b30">
+                        <div class="dez-box p-a20 border-1 bg-gray">
+                            <div class="dez-thum-bx dez-img-overlay1 dez-img-effect zoom"><img src="{% static 'images/' %}{{val.TransportCompany_id.TransportCompany_image}}" height="100" width="100"/>
+                                <div class="">
+                                    <div class=""> <a href="/client/client_transportcompanydetail/{{val.TransportCompany_id}}"> <i class=""></i> </a> <a href="javascript:void(0)"> <i class=""></i> </a> <a href="javascript:void(0)"> <i class=""></i> </a> </div>
+                                </div>
+                            </div>
+                            <div class="dez-info p-t20 text-center">
+                                <h3 class="dez-title m-t0 m-b10"><a href="javascript:void(0)">{{val.TransportCompany_id.TransportCompany_name}}</a></h3>
+                                <h3 class="m-b0">{{val.TransportCompany_id.owner_name}} </h3>
+                                <a href="/client/client_transportcompanydetail/{{val.TransportCompany_id_id}}" class="site-button  m-t15">Detail</a> </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- Product END -->
+        </div>
+        <!-- contact area  END -->
+    </div>
+    <!-- Content END-->
+{% endblock %}

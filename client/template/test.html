@@ -1,0 +1,29 @@
+{% load static %}
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+
+{% for val in s1 %}
+    <li> <a href="/client/client_transportcompany/{{val.service_category_id}}">{{val.service_category_name}}<i class="fa fa-chevron-down"></i></a>
+    </li>
+{% endfor %}
+{% for val in v1 %}
+
+    <li> <a href="/client/client_transportcompany2/{{val.vehicle_category_id}}">{{val.vehicle_category_name}}<i class="fa fa-chevron-down"></i></a>
+    </li>
+{% endfor %}
+{% for val in t1 %}
+   <option value="{{val.TransportCompany_id}}">{{val.TransportCompany_name}}</option>
+{% endfor %}
+
+
+
+</body>

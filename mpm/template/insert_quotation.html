@@ -1,0 +1,68 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content%}
+      <!-- Main Content -->
+<form method="post" name="form3" action="/updatequation/{{b.booking_id}}" data-parsley-validate="">
+  {% csrf_token %}
+      <div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Quotation</h1>
+            <div class="section-header-breadcrumb">
+              <div class="breadcrumb-item active"><a href="/index/">Dashboard</a></div>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="row">
+
+              <div class="col-12 col-md-12 col-lg-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Insert Quotation</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="form-group">
+                      <label>from_location</label>
+                      <div class="input-group">
+                          <input type="text" class="form-control phone-number" name="from_location" READONLY value="{{b.from_location}}">
+
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>to_location</label>
+                      <div class="input-group">
+
+                        <input type="text" class="form-control phone-number" name="to_location" READONLY value="{{b.to_location}}">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <label>quotation_amount</label>
+                            <input type="number"  step="any" class="form-control" name="quotation_amount"   value="" data-parsley-required="true" data-parsley-required-message="This field is required" >
+                      </div>
+
+
+                   <div class="form-group row mb-4">
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                      <div class="col-sm-12 col-md-10">
+                        <button class="btn btn-primary">Insert</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              <div class="col-12 col-md-6 col-lg-6">
+
+
+
+
+              </div>
+            </div>
+          </div>
+          </div>
+        </section>
+
+      </div>
+</form>
+
+{% endblock %}

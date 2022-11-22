@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+{% extends 'header_footer.html' %}
+{% load static %}
+
+{% block content %}
+ <!-- Request A Quote -->
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<head>
+
+</head>
+<body>
+
+        <div class="section-full text-white bg-img-fix p-t70 p-b40 overlay-black-middle " style="background-image:url({% static 'images/bg2.jpg' %});">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-left">
+                            <h3 class="h3">Product</h3>
+                            <div class="dez-separator bg-primary"></div>
+
+                        </div>
+                        <div class="p-t10 p-b20 clearfix">
+                            <form method="post" class="" action="/client/insproduct/{{b}}">
+                                {% csrf_token %}
+                                <input type="hidden" value="Appoinment" name="dzToDo" >
+                                <div class="row">
+                                        <label>Product name</label>
+
+                                         <select name="product_id" id="product_id" class="form-control" onchange="display()">
+                                             <option value="0">-----Select product------</option>
+                                         {% for val in p1 %}
+
+                                           <option  value="{{val.product_id}}">{{val.product_name}}</option>
+                                         {% endfor %}
+                                         </select>
+
+                                    <!--
+                                     <div class="col-lg-6 col-md-6 col-sm-6">
+                                     <label>Booking ID</label>
+                                          <input name="" class="form-control" placeholder="" type="text" value="">
+                                    </div> -->
+                                     <br/>
+                                    <br/>
+                                    <br/>
+                                </div>
+                                <br>
+                                <br>
+                                 <div class="row" name="product" id="product">
+                                     <div class="col-lg-6 col-md-6 col-sm-6">
+                                         <label>Product name</label>
+                                         <div class="form-group">
+                                            <input name="pname1" id="pname1" class="form-control" placeholder="pname" type="text" value="" readonly>
+                                        </div>
+
+                                    </div>
+                                     <div class="col-lg-6 col-md-6 col-sm-6">
+                                           <label>Qty</label>
+                                        <div class="form-group">
+                                            <input name="qty" class="form-control" placeholder="qty1" type="text" value="">
+                                        </div>
+                                    </div>
+
+                                     <input type="hidden" name="booking_id_id" value="{{b}}">
+                                </div>
+
+                                <script>
+                                        var n=1;
+                                        function test()
+                                        {
+                                              n=n+1;
+                                              alert("Hello");
+                                              var e = document.getElementById('product');
+                                              e.innerHTML += "<div class='col-lg-6 col-md-6 col-sm-6'> <label>Product name</label><div class='form-group'><input type='text' name='a' class='form-control' placeholder='product"+n+"' readonly /></div></div>";
+                                              e.innerHTML += "<div class='col-lg-6 col-md-6 col-sm-6'> <label>Qty</label> <div class='form-group'><input type='text' name='qty' class='form-control' placeholder='qty"+n+"' /></div></div>";
+                                        }
+                                    </script>
+                                    <script>
+                                    function display()
+                                    {
+                                            var p = document.getElementById('product_id');
+                                            var value = p.options[product_id.selectedIndex].innerHTML;
+                                            var value1 = p.options[product_id.selectedIndex].value;
+
+                                            if (value1!=0)
+                                            {
+                                                document.getElementById('pname1').value=value;
+                                            }
+                                            else
+                                            {
+                                                alert("Select valid product");
+                                            }
+                                    }
+                                    </script>
+                                    <div class="col-lg-12 text-center">
+                                        <div class="dzFormMsg"></div>
+                                        <button name="submit" value="Reset" type="submit" class="site-button m-r5 skew-secondry">
+											<span>Add More</span>
+										</button>
+                                    </div>
+
+                            </form>
+                            <br>
+
+                             <div class="col-lg-12 text-center">
+
+                                        <form action="/client/productview/{{b}}">
+                                            {% csrf_token %}
+                                        <button name="submit" type="submit" value="Submit" class="site-button skew-secondry">
+											<span>Submit</span>
+										</button>
+                                        </form>
+                             </div>
+                        </div>
+
+
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</body>
+</html>
+        <!-- Request A Quote End -->
+ {% endblock %}

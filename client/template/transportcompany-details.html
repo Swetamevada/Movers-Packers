@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+{% extends 'header_footer.html' %}
+{% load static %}
+{% block content %}
+    <!-- Content -->
+    <div class="page-content bg-white">
+        <!-- inner page banner -->
+        <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({% static 'images/bg1.jpg' %});">
+            <div class="container">
+                <div class="dez-bnr-inr-entry">
+                    <h1 class="text-white">TransportCompany Details</h1>
+                </div>
+            </div>
+        </div>
+        <!-- inner page banner END -->
+        <!-- Breadcrumb row -->
+        <div class="breadcrumb-row">
+            <div class="container">
+                <ul class="list-inline">
+                    <li><a href="/client/Home/">Home</a></li>
+                    <li>TransportCompany Details</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Breadcrumb row END -->
+        <!-- contact area -->
+        <div class="content-area">
+            <!-- Product details -->
+            <div class="container woo-entry">
+				<div class="blog-post blog-md date-style-2">
+					<div class="row m-b30">
+                        {% for item in t2 %}
+                        <div class="col-md-4 col-sm-4 m-b30"> <a href="javascript:void(0);"><img src="{% static 'images/' %}{{item.TransportCompany_image}}" height="700" width="700"/></a> </div>
+                        <div class="col-md-8 col-sm-8">
+                            <div class="dez-post-title ">
+
+                                <h3 class="post-title" ><b>{{item.TransportCompany_name}}</b></h3>
+                            </div>
+                            <table class="table table-bordered" >
+                                <tr>
+                                    <td>Owner Name</td>
+                                    <td>{{item.owner_name}}</td>
+                                </tr>
+                                <tr>
+                                    <td>E-mail</td>
+                                    <td>{{item.email}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Contact</td>
+                                    <td>{{item.contact}} </td>
+                                </tr>
+                                <tr>
+                                    <td>Address</td>
+                                    <td>{{item.addressline1}},{{item.addressline2}},{{item.landmark}} </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Licence No</td>
+                                    <td>{{item.licence_no}} </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Area Name</td>
+                                    <td>{{item.area_id.area_name}} </td>
+                                </tr>
+                            </table>
+
+                            <form method="post" class="cart" action="/client/pricing/{{item.TransportCompany_id}}">
+                                {% csrf_token %}
+                                <input type="hidden" name="TransportCompany_id" value="{{item.TransportCompany_id}}">
+                                <button type="submit"  class="btn btn-primary site-button pull-left">Package</button>
+                            </form>
+
+
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="dez-tabs border-tp product-description bg-tabs">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#web-design-1"><i class="fa fa-globe"></i> <span class="title-head">Gallery</span></a></li>
+
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#developement-1"><i class="fa fa-cog"></i> <span class="title-head"> Review</span></a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div id="web-design-1" class="tab-pane active">
+                                <div class="section-full bg-img-fix p-t70 p-b40 overlay-black-middle" style="background-image:url({% static 'images/background/bg1.jpg' %});">
+            <div class="container">
+                <div class="section-head  text-center text-white">
+                    <h2 class="h3">Gallery</h2>
+                    <div class="dez-separator-outer ">
+                        <div class="dez-separator bg-white style-skew"></div>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <ul id="masonry" class="dez-gallery-listing row gallery-grid-4 m-b0 gallery mfp-gallery">
+                        {% for val in g1 %}
+                        <li class="card-container col-lg-4 col-md-4 col-sm-6 col-xs-6 home">
+                            <div class="dez-box dez-gallery-box">
+                                <div class="dez-media dez-img-overlay1 dez-img-effect"> <a href="javascript:void(0);"> <img src="{% static 'images/' %}{{val.gallry_path}}"  alt=""> </a>
+                                    <div class="overlay-bx">
+                                        <div class="overlay-icon"> <a href="javascript:void(0);"> <i class="fa fa-link icon-bx-xs"></i> </a> <a  href="{% static 'images/our-work/pic1.jpg' %}" class="mfp-link" title="Title Come Here"> <i class="fa fa-picture-o icon-bx-xs"></i> </a> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+                                </div>
+                                <div id="graphic-design-1" class="tab-pane">
+                                    <table class="table table-bordered" >
+                                        <tr>
+                                            <td>Pricing</td>
+                                            <td>$52.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Stock Availability</td>
+                                            <td>Available</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Rating</td>
+                                            <td><span class="rating-bx"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </span> </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div id="developement-1" class="tab-pane">
+                                    <div id="comments">
+                                        <ol class="commentlist">
+                                            {% for val in f1 %}
+                                            <li class="comment">
+                                                <div class="comment_container"> <img class="avatar avatar-60 photo" src="{% static 'images/image/user4.png' %}" alt="">
+                                                    <div class="comment-text">
+                                                        <p class="meta"> <strong class="author">{{val.customer_id.customer_name}}</strong> <span><i class="fa fa-clock-o"></i>{{val.date}}</span> </p>
+                                                        <div class="description">
+                                                            <p>{{val.description}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            {% endfor %}
+                                        </ol>
+                                    </div>
+
+                                    {% if 'id' in request.session %}
+                                    <div id="review_form_wrapper">
+                                        <div id="review_form">
+                                            <div id="respond" class="comment-respond">
+                                                <h3 class="comment-reply-title" id="reply-title">Add a review</h3>
+                                                <form class="comment-form" method="post" action="/client/client_feedback/" data-parsley-validate>
+                                                    {% csrf_token %}
+                                                <input type="hidden" name="TransportCompany_id" value="{% for item in t2 %}{{item.TransportCompany_id}}{% endfor %}">
+                                                    <div class="comment-form-email">
+                                                        <textarea name="description"  data-parsley-required="true" id="form-message" minlength="3" data-parsley-required-message="This field is required">
+
+
+                                                        </textarea>
+
+                                                    </div>
+                                                    <div>
+                                                        <input type="submit" value="Add feedback" class="site-button"  name="submit">
+                                                     </div>
+
+
+
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Product details -->
+        </div>
+        <!-- contact area  END -->
+    </div>
+    <!-- Content END-->
+    {% endblock %}

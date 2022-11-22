@@ -1,0 +1,68 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content%}
+      <!-- Main Content -->
+<form method="post" name="form3" action="/ins_transportcompanyservicecategory/">
+  {% csrf_token %}
+      <div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Service Category Detail</h1>
+            <div class="section-header-breadcrumb">
+              <div class="breadcrumb-item active"><a href="/index/">Dashboard</a></div>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="row">
+
+              <div class="col-12 col-md-12 col-lg-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Insert Service Category Detail</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="form-group">
+                      <label>Transport company name</label>
+                      <div class="form-group">
+
+                        <select class="form-control select2" name="TransportCompany_id">
+                        {% for val in t1 %}
+                          <option value="{{val.TransportCompany_id}}">{{val.TransportCompany_name}}</option>
+                        {% endfor %}
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Service category name</label>
+                      <div class="form-group">
+
+                        <select class="form-control select2" name="service_category_id">
+                        {% for val in s1 %}
+                          <option value="{{val.service_category_id}}">{{val.service_category_name}}</option>
+                        {% endfor %}
+                        </select>
+                      </div>
+                   </div>
+                    <div class="form-group row mb-4">
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                      <div class="col-sm-12 col-md-10">
+                        <button class="btn btn-primary">Insert</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              <div class="col-12 col-md-6 col-lg-6">
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+</form>
+
+{% endblock %}

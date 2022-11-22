@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+
+<!-- Mirrored from radixtouch.in/templates/snkthemes/grexa/source/light/auth-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Dec 2020 09:01:31 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <title>Movers & Packers</title>
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="{% static 'assets/css/app.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/bundles/bootstrap-social/bootstrap-social.css' %}">
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/components.css' %}">
+  <!-- Custom style CSS -->
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.7.0/parsley.min.js"></script>
+   <link rel="stylesheet" href="{% static 'parsley.css' %}">
+  <link rel='shortcut icon' type='image/x-icon' href="{% static 'image/favicon.png' %}" />
+</head>
+<!--<script>-->
+<!--  function validateform()-->
+<!--  {-->
+<!--    var email=document.f1.email.value;-->
+<!--    var password=document.f1.password.value;-->
+
+<!--    var x=document.f1.email.value;-->
+<!--    var atposition=x.indexOf("@");-->
+<!--    var dotposition=x.lastIndexOf(".");-->
+<!--    if (email==null || password==""){-->
+<!--    alert("Please enter email and password");-->
+<!--    return false;-->
+<!--    }else if(password.length<8){-->
+<!--    alert("password must be at least 8 character long.");-->
+<!--    return false;-->
+<!--    }else if(atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length){-->
+<!--    alert("Please enter a valid e-mail address");-->
+<!--    return false;-->
+<!--    }-->
+<!--  }-->
+<!--</script>-->
+<script>
+  function validateform()
+  {
+   var password=document.f1.password.value;
+    if(password.length<8)
+    {
+       alert("password must be at least 8 character long.");
+       return false;
+     }
+   }
+</script>
+<script>
+  function f1(){
+  alert("Login successfully ");
+  }
+</script>
+<body class="background-image-body">
+  <div class="loader"></div>
+  <div id="app">
+    <section class="section">
+      <div class="container mt-5">
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+          <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+            <div class="login-brand login-brand-color">
+
+            	<img alt="image" src="{% static 'image/q2.png' %}" height="80" width="150" />
+              <h3>Movers & Packers</h3>
+
+            </div>
+            <div class="card">
+              <div class="card-header card-header-auth">
+                <h4>Login</h4>
+              </div>
+              <div class="card-body">
+                <form method="POST" name="f1" action="#" class=""  onclick="return f1();" novalidate="" data-parsley-validate="">
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" class="form-control" name="email" tabindex="1" value="{{admin_cookie_email}}" data-parsley-required="true" data-parsley-required-message="Please Enter E-mail">
+                  </div>
+                  <div class="form-group">
+                    <div class="d-block">
+                      <label for="password" class="control-label">Password</label>
+                      <div class="float-right">
+                        <a href="/forgotpassword/" class="text-small">
+                          Forgot Password?
+                        </a>
+                      </div>
+                    </div>
+                    <input id="password" type="password" class="form-control" name="password" tabindex="2" value="{{admin_cookie_password}}" data-parsley-required="true" data-parsley-required-message="Please Enter Password">
+                  </div>
+                  <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
+                      <label class="custom-control-label" for="remember-me">Remember Me</label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-lg btn-block btn-auth-color" tabindex="4">
+                      Login
+                    </button>
+                  </div>
+                  <span style="color:red">
+                    {% for data in messages %}
+                    <p>{{data}}</p>
+                    {% endfor %}
+                  </span>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- General JS Scripts -->
+  <script src="{% static 'assets/js/app.min.js' %}"></script>
+  <!-- JS Libraies -->
+  <!-- Page Specific JS File -->
+  <!-- Template JS File -->
+  <script src="{% static 'assets/js/scripts.js' %}"></script>
+  
+</body>
+
+
+<!-- Mirrored from radixtouch.in/templates/snkthemes/grexa/source/light/auth-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Dec 2020 09:01:31 GMT -->
+</html>

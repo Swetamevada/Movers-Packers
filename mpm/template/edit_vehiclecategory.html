@@ -1,0 +1,70 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content%}
+      <!-- Main Content -->
+<form method="post" name="form3" action="/update_vehiclecategory/{{vc.vehicle_category_id}}" enctype="multipart/form-data" data-parsley-validate="">
+  {% csrf_token %}
+      <div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Vehicale Category</h1>
+            <div class="section-header-breadcrumb">
+              <div class="breadcrumb-item active"><a href="/index/">Dashboard</a></div>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="row">
+
+              <div class="col-12 col-md-12 col-lg-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Vehicle Category</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="form-group">
+                      <label>Vehicle category name</label>
+                      <div class="input-group">
+
+                        <input type="text" class="form-control phone-number" name="vehicle_category_name" value="{{vc.vehicle_category_name}}" data-parsley-required="true" data-parsley-required-message="This field is required">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Gallery path</label>
+                      <div class="input-group">
+                        <img src="{% static 'image/' %}{{vc.vehicle_image}}" height="100" width="100" name="output" id="output"/>
+                        <input type="file" class="form-control phone-number" value="{{vc.vehicle_image}}" name="vehicle_image"  id="vehicle_image" accept="image/*" onchange="loadFile(event)" data-parsley-required="true" data-parsley-required-message="This field is required" />
+                        <script>
+                             function loadFile(event){
+                                        document.getElementById('output').src=URL.createObjectURL(event.target.files[0]);
+                             }
+                        </script>
+                        <br/>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Description</label>
+                      <div class="input-group">
+
+                        <input type="text" class="form-control phone-number" name="description" value="{{vc.description}}" data-parsley-required="true" data-parsley-required-message="This field is required">
+                      </div>
+                    </div>
+
+
+
+                    <div class="form-group row mb-4">
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                      <div class="col-sm-12 col-md-10">
+                        <button class="btn btn-primary">Update</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+          </div>
+        </section>
+      </div>
+</form>
+
+{% endblock %}

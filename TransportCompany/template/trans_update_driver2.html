@@ -1,0 +1,102 @@
+{% extends 'TransportCompany_header.html' %}
+{% load static %}
+{% block content%}
+      <!-- Main Content -->
+<form method="post" name="form3" action="/Tc/trans_update_driver/{{g.driver_id}}" enctype="multipart/form-data" data-parsley-validate="">
+  {% csrf_token %}
+      <div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Driver</h1>
+            <div class="section-header-breadcrumb">
+              <div class="breadcrumb-item active"><a href="/index/">Dashboard</a></div>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="row">
+
+              <div class="col-12 col-md-12 col-lg-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Insert Driver</h4>
+                  </div>
+                  <div class="card-body">
+
+                   <div class="form-group">
+                      <label>Driver Name</label>
+                        <input type="text" class="form-control phone-number" name="driver_name" value="{{g.driver_name}}" required>
+                    </div>
+
+                   <div class="form-group">
+                      <label>E-mail</label>
+                        <input type="email" class="form-control phone-number" name="email" value="{{g.email}}" required>
+                    </div>
+
+                   <div class="form-group">
+                      <label>password</label>
+                        <input type="password" class="form-control phone-number" name="password"  value="{{g.password}}" required>
+                    </div>
+
+                   <div class="form-group">
+                      <label>Contact</label>
+                        <input type="contact" class="form-control phone-number"  value="{{g.contact}}" name="contact" pattern="^[0-9]{10}" required>
+                    </div>
+
+                   <div class="form-group">
+                      <label>Address Line1</label>
+                        <input type="text" class="form-control phone-number" name="addressline1" value="{{g.addressline1}}" required>
+                    </div>
+
+                   <div class="form-group">
+                      <label>Address Line2</label>
+                        <input type="text" class="form-control phone-number" name="addressline2" value="{{g.addressline2}}" required>
+                    </div>
+
+                   <div class="form-group">
+                      <label>landmark</label>
+                        <input type="text" class="form-control phone-number" name="landmark" value="{{g.landmark}}" required>
+                    </div>
+                     <div class="form-group">
+                      <label>License Image</label>
+                        <img src="{% static 'image/' %}{{g.license_image}}" height="100" width="100" name="output" id="output"/>
+                        <input type="file" class="form-control phone-number" value="{{g.license_image}}" name="license_image" id="license_image" accept="image/*" onchange="loadFile(event)" />
+                        <script>
+                              function loadFile(event){
+                                        document.getElementById('output').src=URL.createObjectURL(event.target.files[0]);
+                             }
+                        </script>
+                        <br/>
+                    </div>
+                    <div class="form-group">
+                      <label>Transport Company name</label>
+                      <div class="form-group">
+                        <select class="form-control select2" name="TransportCompany_id">
+                        {% for val in t %}
+                          <option value="{{val.TransportCompany_id}}" {% if val.TransportCompany_id == g.TransportCompany_id_id %}selected{%endif%}>{{val.TransportCompany_name}}</option>
+                        {% endfor %}
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row mb-4">
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                      <div class="col-sm-12 col-md-10">
+                        <button class="btn btn-primary">Insert</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              <div class="col-12 col-md-6 col-lg-6">
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+</form>
+
+{% endblock %}

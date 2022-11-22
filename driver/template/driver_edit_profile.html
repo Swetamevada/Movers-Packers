@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+{% extends 'driver_header.html' %}
+{% load static %}
+
+<!-- Mirrored from radixtouch.in/templates/snkthemes/grexa/source/light/export-table.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Dec 2020 13:51:28 GMT -->
+{% block content %}
+      <!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Profile</h1>
+            <div class="section-header-breadcrumb">
+              <div class="breadcrumb-item active"><a href="/driver/driver_index/">Dashboard</a></div>
+              <div class="breadcrumb-item">Profile</div>
+            </div>
+          </div>
+          <div class="section-body">
+          	<div class="row mt-sm-4 background-image-body">
+          		<div class="col-md-12 col-lg-12 box-center">
+                  <div class="row author-box">
+          				<img alt="image" src="{% static 'image/user4.png' %}" class="rounded-circle author-box-picture box-center mt-4">
+          			</div>
+                  <div class="row author-box">
+          				<div class="page-inner box-center align-center">
+                            {% for val in d1 %}
+                          <br/>
+                              <h2><a href="#">{{val.driver_name}}</a></h2>
+                            {% endfor %}
+                          <div class="page-description">
+              					<h5>Driver</h5>
+            				</div>
+          				</div>
+
+                  </div>
+
+          		</div>
+          	</div>
+
+
+            <div class="row mt-sm-4">
+
+              <div class="col-12 col-md-12 col-lg-12">
+                <div class="card">
+                  <div class="padding-20">
+                    <ul class="nav nav-pills mb-1" id="myTab2" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link active " id="profile-tab1" data-toggle="tab" href="#about" role="tab"
+                           aria-selected="true">About</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="profile-tab2" data-toggle="tab" href="#settings" role="tab"
+                          aria-selected="false">Edit Profile</a>
+                      </li>
+                    </ul>
+                    <div class="tab-content tab-bordered" id="myTab3Content">
+                      <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="home-tab2">
+                          <p class="clearfix">
+                        <span class="float-left">
+                          Driver Name
+                        </span>
+                        <span class="float-right text-muted">
+                          {{d.driver_name}}
+                        </span>
+                      </p>
+
+                          <p class="clearfix">
+                        <span class="float-left">
+                            Email
+                        </span>
+                        <span class="float-right text-muted">
+                          {{d.email}}
+                        </span>
+                      </p>
+
+                        <p class="clearfix">
+                        <span class="float-left">
+                          Contact
+                        </span>
+                        <span class="float-right text-muted">
+                          {{d.contact}}
+                        </span>
+                      </p>
+
+                      <p class="clearfix">
+                        <span class="float-left">
+                          Address
+                        </span>
+                        <span class="float-right text-muted">
+                          {{d.addressline1}},{{d.addressline2}},{{d.landmark}}
+                        </span>
+                      </p>
+                      <p class="clearfix">
+                        <span class="float-left">
+                          <a href="/driver/driver_edit_pic/">Change Licence image</a>
+                        </span>
+                        <span class="float-right text-muted">
+                        	<img src="{% static 'image/' %}{{ d.license_image }} " height="100" width="100"/>
+                        </span>
+                      </p>
+
+
+
+                        <p class="clearfix">
+                        <span class="float-left">
+                          Transport Company Name
+                        </span>
+                        <span class="float-right text-muted">
+                          {{d.TransportCompany_id.TransportCompany_name}}
+                        </span>
+                      </p>
+
+
+                      </div>
+
+                      <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="profile-tab1">
+                        <form method="post" class="needs-validation" action="/driver/driver_update_profile/" >
+                            {% csrf_token %}
+                          <div class="card-header">
+                            <h4>Edit Profile</h4>
+                          </div>
+                          <div class="card-body">
+
+                            <div class="row">
+                              <div class="form-group col-md-7 col-12">
+                                <label>Driver Name</label>
+                                <input type="text" class="form-control" name="driver_name" value="{{d.driver_name}}">
+                              </div>
+                              <div class="form-group col-md-5 col-12">
+                                <label>Contact</label>
+                                <input type="tel" class="form-control" name="contact" value="{{d.contact}}">
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="form-group col-md-7 col-12">
+                                <label>Email</label>
+                                <input type="email" class="form-control" name="email" value="{{d.email}}">
+                                <div class="invalid-feedback">
+                                  Please fill in the email
+                                </div>
+                              </div>
+                              <div class="form-group col-md-5 col-12">
+                                <label>Password</label>
+                                <input type="text" class="form-control" name="password" value="{{d.password}}">
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="form-group col-md-6 col-12">
+                                <label>Addressline1</label>
+                                <input type="text" class="form-control" name="addressline1" value="{{d.addressline1}}">
+                              </div>
+                              <div class="form-group col-md-6 col-12">
+                                <label>Addressline2</label>
+                                <input type="text" class="form-control" name="addressline2" value="{{d.addressline2}}">
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="form-group col-md-6 col-12">
+                                <label>Landmark</label>
+                                <input type="text" class="form-control" name="landmark" value="{{d.landmark}}">
+                              </div>
+                            </div>
+
+                            </div>
+
+
+                          <div class="card-footer text-right">
+                            <button class="btn btn-primary">Save Changes</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+{% endblock %}

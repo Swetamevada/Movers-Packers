@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<!-- Mirrored from cargozone.dexignlab.com/xhtml/cargo-home-style-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 20 Feb 2021 13:20:15 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+	<meta name="robots" content="" />
+	<meta property="description" content="CargoZone is a clean and mobile responsive html Cargo & Transport service template, very easy to customize according to transport types or any other business also can use it." />
+	<meta property="og:title" content="CargoZone - Transport and Cargo Template" />
+	<meta property="og:description" content="CargoZone is a clean and mobile responsive html Cargo & Transport service template, very easy to customize according to transport types or any other business also can use it." />
+	<meta property="og:image" content="{% static 'images/social-image.png' %}" />
+	<meta name="format-detection" content="telephone=no">
+
+	<!-- FAVICONS ICON -->
+	<link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.png' %}" />
+
+	<!-- PAGE TITLE HERE -->
+	<title>Movers & Packers </title>
+
+	<!-- MOBILE SPECIFIC -->
+	<meta name="viewport" content="width=device-width">
+
+	<!--[if lt IE 9]>
+	<script src="https://cargozone.dexignlab.com/xhtml/js/html5shiv.min.js"></script>
+	<script src="https://cargozone.dexignlab.com/xhtml/js/respond.min.js"></script>
+	<![endif]-->
+
+	<!-- STYLESHEETS -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/plugins.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/templete.css' %}">
+	<link rel="stylesheet" type="text/css" class="skin" href="{% static 'css/skin/skin-1.css' %}">
+
+	<!-- REVOLUTION SLIDER CSS -->
+	<link rel="stylesheet" type="text/css" href="{% static 'plugins/revolution/revolution/css/settings.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'plugins/revolution/revolution/css/navigation.css' %}">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.7.0/parsley.min.js"></script>
+    <link rel="stylesheet" href="{% static 'parsley.css' %}">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.7.0/parsley.min.js"></script>
+    <link rel="stylesheet" href="{% static 'parsley.css' %}">
+
+<script>
+    $(function()){
+
+        $( "#search" ).autocomplete({
+            source: '{% url 'search1' %}'
+
+        });
+    });
+</script>
+
+	<script>
+		function load(){
+
+     			$.ajax({
+      				  url:"/client/client_header_menu/",
+        				  success: function(data)
+       				 {
+        				    $("#menu").html(data);
+
+       				 }
+   			 });
+
+		}
+
+	</script>
+   <script>
+		function load2(){
+
+     			$.ajax({
+      				  url:"/client/client_header_menu2/",
+        				  success: function(data)
+       				 {
+        				    $("#menu2").html(data);
+
+       				 }
+   			 });
+                $.ajax({
+                url:"/client/client_header_menu1/",
+                  success: function(data)
+                {
+                    $("#menu1").html(data);
+
+                }
+          });
+		}
+
+	</script>
+
+</head>
+
+<body id="bg" onload="load(),load2()">
+<div class="page-wraper">
+<div id="loading-area"></div>
+    <!-- Header -->
+    <header class="site-header header-style-4 style-1 mo-left">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="dez-topbar-left">
+                        <ul class="social-line text-center pull-right" id="menu1" name="menu">
+                        </ul>
+                    </div>
+                    <div class="dez-topbar-right">
+                        <br>
+                        <ul class="social-line text-center pull-right">
+                            {% if 'id' in request.session %}
+                            <a href="/client/client_edit_profile/" class="site-button skew-secondry">Edit Profile</a>
+                            <a href="/client/client_logout/" class="site-button skew-secondry">Logout</a>
+                            <br>
+                            {% else %}
+                             <a href="/client/client_login/" class="site-button skew-secondry"> LogIn</a>
+                            <a href="/client/client_registration/" class="site-button skew-secondry">  Registration</a>
+                            <br>
+                            {% endif %}
+
+                        </ul>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<!-- Top Bar END-->
+        <!-- Main Header -->
+        <div class="sticky-header main-bar-wraper navbar-expand-lg">
+            <div class="main-bar clearfix ">
+                <div class="container header-contant-block">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-3 d-flex">
+                            <div class="logo-header align-self-center">
+								<a href="/client/home/"><img src="{% static 'images/image/head.png' %}" width="300" height="100" ></a>
+							</div>
+                        </div>
+                        <div class="col-xl-8 col-lg-9">
+                            <ul class="contact-info clearfix">
+								<li></li>
+                                <li>
+                                    <h6 class="text-primary"><i class="fa fa-phone"></i> Call Us</h6>
+                                    <span>+91 8523697412</span> </li>
+                                <li>
+                                    <h6 class="text-primary"><i class="fa fa-envelope-o"></i> Send us an Email</h6>
+                                    <span>moverspackers@gmail.com</span> </li>
+                                <li>
+								</li>
+                            </ul>
+                        </div>
+
+						<div class="col-xl-4 col-lg-3 d-flex">
+                            <div class="header-nav navbar-collapse collapse nav-dark justify-content-start"  id="navbarNavDropdown1">
+                                <ul class="nav navbar-nav">
+
+							    </ul>
+                            </div>
+						</div>
+
+                    </div>
+                </div>
+                <div class="slide-up">
+                    <div class="container clearfix">
+                        <!-- Website Logo -->
+						<div class="logo-header mostion">
+							<a href="index.html"><img src="{% static 'images/logo.png' %}" width="193" height="89" alt=""></a>
+						</div>
+						<!-- Nav Toggle Button -->
+						<button class="navbar-toggler collapsed navicon justify-content-end" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+							<span></span>
+							<span></span>
+							<span></span>
+						</button>
+                        <!-- Extra Nav -->
+                        <div class="extra-nav">
+                        </div>
+                        <!-- Quik Search -->
+                        <div class="dez-quik-search bg-primary">
+
+                        </div>
+                        <!-- Main Nav -->
+                        <div class="header-nav navbar-collapse collapse nav-dark justify-content-start" id="navbarNavDropdown">
+                            <ul class="nav navbar-nav">
+								<li class="active"> <a href="/client/Home/">Home<i class="fa fa-chevron-down"></i></a></li>
+
+								<li> <a href="javascript:;">Services<i class="fa fa-chevron-down"></i></a>
+
+									<ul class="sub-menu" id="menu" name="menu">
+
+									</ul>
+
+								</li>
+                                <li> <a href="javascript:;">Vehicle<i class="fa fa-chevron-down"></i></a>
+
+									<ul class="sub-menu" id="menu2" name="menu2">
+
+									</ul>
+
+								</li>
+
+
+
+
+                                 {% if 'id' in request.session %}
+								<li class="has-mega-menu "> <a href="/client/client_bookingdetails/">My Booking </a></li>
+                                {% endif %}
+								<li class="has-mega-menu "> <a href="/client/contact/">Contact Us</a></li>
+
+
+							</ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main Header END -->
+    </header>
+    <!-- Header END -->
+</div>
+
+
+{% block content%}
+
+
+
+
+{% endblock %}
+
+<footer class="site-footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="widget widget_about">
+                            <div class="logo-footer"><img src="{% static 'images/image/f1.png' %}" alt=""></div>
+                            <p class="m-t20 m-b15"><strong>Movers & Packers</strong> has the responsibility to ensure the smooth and timely delivery by providing reliable sevices, the company has gained enormous recognition from customers throughout the country.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="widget widget_services">
+                            <h3 class="m-b10">Our services</h3>
+                            <div class="dez-separator bg-primary"></div>
+                            <ul>
+                                <li><a href="services-2.html">Home Shifting</a></li>
+                                <li><a href="services-2.html">Office Shifting</a></li>
+                                <li><a href="services-2.html">Two-wheeler Shifting</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="widget widget_getintuch">
+                            <h3 class="m-b10">Contact us</h3>
+                            <div class="dez-separator bg-primary"></div>
+                            <ul>
+                                <li><i class="fa fa-map-marker"></i><strong>address</strong> s-12, vinayak complex,	near orange mall,satelite,Gujarat</li>
+                                <li><i class="fa fa-phone"></i><strong>phone</strong>+91 8523697412<br/>(24/7 Support Line)</li>
+                                <li><i class="fa fa-fax"></i><strong>E-mail</strong>
+                                    moverspackers15@gmail.com</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Footer Bottom Part -->
+        <div class="footer-bottom bg-primary">
+            <div class="container">
+                <div class="row text-white">
+                    <div class="col-lg-4 text-left">
+						<span>© Copyright 2020</span>
+					</div>
+                    <div class="col-lg-4 text-center">
+						<span> Design With <i class="fa fa-heart heart"></i> Movers & Packers </span>
+					</div>
+                    <div class="col-lg-4 text-right">
+						<ul class="list-inline">
+							<li><a href="about-2.html"> About</a></li>
+							<li><a href="help.html"> Help Desk</a></li>
+							<li><a href="privacy-policy.html"> Privacy Policy</a></li>
+						</ul>
+					</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer END-->
+    <button class="scroltop fa fa-arrow-up" ></button>
+</div>
+<!-- JavaScript files ========================================= -->
+<script src="{% static 'js/jquery.min.js' %}"></script><!-- JQUERY.MIN JS -->
+<script src="{% static 'plugins/bootstrap/js/popper.min.js' %}"></script><!-- BOOTSTRAP.MIN JS -->
+<script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script><!-- BOOTSTRAP.MIN JS -->
+<script src="{% static 'plugins/bootstrap-select/bootstrap-select.min.js' %}"></script><!-- FORM JS -->
+<script src="{% static 'plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js' %}"></script><!-- FORM JS -->
+<script src="{% static 'plugins/magnific-popup/magnific-popup.js' %}"></script><!-- MAGNIFIC POPUP JS -->
+<script src="{% static 'plugins/counter/waypoints-min.js' %}"></script><!-- WAYPOINTS JS -->
+<script src="{% static 'plugins/counter/counterup.min.js' %}"></script><!-- COUNTERUP JS -->
+<script src="{% static 'plugins/imagesloaded/imagesloaded.js' %}"></script><!-- IMAGESLOADED -->
+<script src="{% static 'plugins/masonry/masonry-3.1.4.js' %}"></script><!-- MASONRY -->
+<script src="{% static 'plugins/masonry/masonry.filter.js' %}"></script><!-- MASONRY -->
+<script src="{% static 'plugins/owl-carousel/owl.carousel.js' %}"></script><!-- OWL SLIDER -->
+
+<script src="{% static 'js/dz.carousel.js' %}"></script><!-- SORTCODE FUCTIONS  -->
+<script src="{% static 'js/dz.ajax.js' %}"></script><!-- CONTACT JS  -->
+<!-- REVOLUTION JS FILES -->
+<script src="{% static 'plugins/revolution/revolution/js/jquery.themepunch.tools.min.js' %}"></script>
+<script src="{% static 'plugins/revolution/revolution/js/jquery.themepunch.revolution.min.js' %}"></script>
+<!-- Slider revolution 5.0 Extensions  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+<script src="{% static 'plugins/revolution/revolution/js/extensions/revolution.extension.actions.min.js' %}"></script>
+<script src="{% static 'plugins/revolution/revolution/js/extensions/revolution.extension.carousel.min.js' %}"></script>
+<script src="{% static 'plugins/revolution/revolution/js/extensions/revolution.extension.kenburn.min.js' %}"></script>
+<script src="{% static 'plugins/revolution/revolution/js/extensions/revolution.extension.layeranimation.min.js' %}"></script>
+<script src="{% static 'plugins/revolution/revolution/js/extensions/revolution.extension.migration.min.js' %}"></script>
+<script src="{% static 'plugins/revolution/revolution/js/extensions/revolution.extension.navigation.min.js' %}"></script>
+<script src="{% static 'plugins/revolution/revolution/js/extensions/revolution.extension.parallax.min.js' %}"></script>
+<script src="{% static 'plugins/revolution/revolution/js/extensions/revolution.extension.slideanims.min.js' %}"></script>
+<script src="{% static 'plugins/revolution/revolution/js/extensions/revolution.extension.video.min.js' %}"></script>
+<script>
+	var tpj=jQuery;
+
+	var revapi1014;
+	tpj(document).ready(function() {
+		if(tpj("#rev_slider_1014_1").revolution == undefined){
+			revslider_showDoubleJqueryError("#rev_slider_1014_1");
+		}else{
+			revapi1014 = tpj("#rev_slider_1014_1").show().revolution({
+				sliderType:"standard",
+				jsFileLocation:"//server.local/revslider/wp-content/plugins/revslider/public/assets/js/",
+				dottedOverlay:"none",
+				delay:9000,
+				startwidth:1200,
+				startheight:750,
+				hideThumbs:600,
+				navigation: {
+					keyboardNavigation:"off",
+					keyboard_direction: "horizontal",
+					mouseScrollNavigation:"off",
+					mouseScrollReverse:"default",
+					onHoverStop:"off",
+					touch:{
+						touchenabled:"on",
+						swipe_threshold: 75,
+						swipe_min_touches: 1,
+						swipe_direction: "horizontal",
+						drag_block_vertical: false
+					}
+					,
+					arrows: {
+							style: "hermes",
+							enable: true,
+							hide_onmobile: false,
+							hide_onleave: false,
+							tmp: '<div class="tp-arr-allwrapper">	<div class="tp-arr-imgholder"></div>	<div class="tp-arr-titleholder">{{title}}</div>	</div>',
+							left: {
+								h_align: "left",
+								v_align: "center",
+								h_offset: 0,
+								v_offset: 0
+							},
+							right: {
+								h_align: "right",
+								v_align: "center",
+								h_offset: 0,
+								v_offset: 0
+							}
+						}
+				},
+				responsiveLevels:[1240,1024,778,480],
+				visibilityLevels:[1240,1024,778,480],
+
+				lazyType:"none",
+				shadow:0,
+				spinner:"off",
+				stopLoop:"on",
+				stopAfterLoops:0,
+				stopAtSlide:1,
+				shuffle:"off",
+				autoHeight:"off",
+				fullScreenAutoWidth:"off",
+				fullScreenAlignForce:"off",
+				fullScreenOffsetContainer: "",
+				fullScreenOffset: "60px",
+				disableProgressBar:"on",
+				hideThumbsOnMobile:"off",
+				hideSliderAtLimit:0,
+				hideCaptionAtLimit:0,
+				hideAllCaptionAtLilmit:0,
+				debugMode:false,
+				fallbacks: {
+					simplifyAll:"off",
+					nextSlideOnWindowFocus:"off",
+					disableFocusListener:false,
+				}
+			});
+		}
+
+
+	});	/*ready*/
+</script>
+</body>
+
+<!-- Mirrored from cargozone.dexignlab.com/xhtml/cargo-home-style-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 16 Feb 2021 14:39:27 GMT -->
+</html>

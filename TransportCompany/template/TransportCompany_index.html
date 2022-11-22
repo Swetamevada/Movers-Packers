@@ -1,0 +1,106 @@
+{% extends 'TransportCompany_header.html' %}
+{% load static %}
+{% block content%}
+ <div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Dashboard</h1>
+          </div>
+          <div class="row">
+              <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="card card-statistic-2">
+                  <div class="card-icon shadow-primary bg-cyan">
+                       <img src="{% static 'image/userd.jpg' %}" height="50" >
+                    <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                  </div>
+                  <div class="card-body card-type-3">
+                  	<div class="row">
+                    	<div class="col">
+
+                      		<h6 class="text-muted mt-2 mb-1">customer</h6>
+                      		<h6 class="font-weight-bold mb-0">{{user}}</h6>
+                    	</div>
+                  	</div>
+                   </div>
+
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="card card-statistic-2">
+                  <div class="card-icon shadow-primary bg-purple">
+                       <img src="{% static 'image/transportcom.png' %}" height="60" >
+                    <i class="fab fa-first-order"></i>
+                  </div>
+                  <div class="card-body card-type-3">
+                  	<div class="row">
+                    	<div class="col">
+                      		<h6 class="text-muted mt-2 mb-1">TransportCompany</h6>
+                      		<h6 class="font-weight-bold mb-0">{{tc}}</h6>
+                    	</div>
+                  	</div>
+                   </div>
+
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="card card-statistic-2">
+                  <div class="card-icon shadow-primary bg-hibiscus">
+                       <img src="{% static 'image/booking.png' %}" height="50" >
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                  </div>
+                  <div class="card-body card-type-3">
+                  	<div class="row">
+                    	<div class="col">
+                      		<h6 class="text-muted mt-2 mb-1">Booking</h6>
+                      		<h6 class="font-weight-bold mb-0">{{booking}}</h6>
+                    	</div>
+                  	</div>
+
+                </div>
+              </div>
+          </div>
+
+            <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+             <div class="col-lg-12 col-md-12 col-sm-12">
+             <div class="card">
+                <div class="card-header">
+                  <h4>Recent Client Feedback</h4>
+                </div>
+                 {% for f1 in f %}
+                <div class="card-body">
+                  <ul class="list-unstyled user-progress list-unstyled-border list-unstyled-noborder mt-2">
+                    <li class="media">
+
+                      <div class="media-body">
+                        <div class="media-title">{{f1.customer_id.customer_name}}</div>
+                        <div >
+                        </div>
+                        <div class="text-muted">{{f1.description}}</div>
+                      </div>
+                      <div class="media-cta">
+                        <div class="text-job text-muted">{{f1.date}}</div>
+                      </div>
+                    </li>
+
+                    
+                    
+                    
+                  </ul>
+                </div>
+               {% endfor %}
+              </div>
+
+            </div>
+            </div>
+              
+
+
+
+
+              </div>
+            </div>
+            </div>
+         </section>
+   {% endblock %}

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+{% extends 'header.html' %}
+{% load static %}
+
+<!-- Mirrored from radixtouch.in/templates/snkthemes/grexa/source/light/export-table.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Dec 2020 13:51:28 GMT -->
+{% block content %}
+      <!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Profile</h1>
+            <div class="section-header-breadcrumb">
+              <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+              <div class="breadcrumb-item"><a href="#">Extra</a></div>
+              <div class="breadcrumb-item">Profile</div>
+            </div>
+          </div>
+          <div class="section-body">
+          	<div class="row mt-sm-4 background-image-body">
+          		<div class="col-md-12 col-lg-12 box-center">
+                  <div class="row author-box">
+          				<div class="page-inner box-center align-center">
+                            {% for val in c1 %}
+                              <h2><a href="#">{{val.customer_name}}</a></h2>
+                            {% endfor %}
+          				</div>
+                  </div>
+
+          		</div>
+          	</div>
+            <div class="row mt-sm-4">
+              <div class="col-12 col-md-12 col-lg-4">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Personal Details</h4>
+                  </div>
+
+                  <div class="card-body">
+                    <div class="py-4">
+                      <p class="clearfix">
+                        <span class="float-left">
+                          Email
+                        </span>
+                        <span class="float-right text-muted">
+                          {% for val in c1 %}
+                              {{val.email}}
+                          {% endfor %}
+                        </span>
+                      </p>
+                      <p class="clearfix">
+                        <span class="float-left">
+                          Password
+                        </span>
+                        <span class="float-right text-muted">
+                          {% for val in c1 %}
+                              {{val.password}}
+                          {% endfor %}
+                        </span>
+                      </p>
+                      <p class="clearfix">
+                        <span class="float-left">
+                          Contact
+                        </span>
+                        <span class="float-right text-muted">
+                          {% for val in c1 %}
+                              {{val.contact}}
+                          {% endfor %}
+                        </span>
+                      </p>
+                      <p class="clearfix">
+                        <span class="float-left">
+                          Addressline1
+                        </span>
+                        <span class="float-right text-muted">
+                          {% for val in c1 %}
+                              {{val.addressline1}}
+                          {% endfor %}
+                        </span>
+                      </p>
+                      <p class="clearfix">
+                        <span class="float-left">
+                          Addressline2
+                        </span>
+                        <span class="float-right text-muted">
+                          {% for val in c1 %}
+                              {{val.addressline2}}
+                          {% endfor %}
+                        </span>
+                      </p>
+                      <p class="clearfix">
+                        <span class="float-left">
+                          Landmark
+                        </span>
+                        <span class="float-right text-muted">
+                          {% for val in c1 %}
+                              {{val.landmark}}
+                          {% endfor %}
+                        </span>
+                      </p>
+                      <p class="clearfix">
+                        <span class="float-left">
+                          Gender
+                        </span>
+                        <span class="float-right text-muted">
+                          {% for val in c1 %}
+                              {{val.gender}}
+                          {% endfor %}
+                        </span>
+                      </p>
+
+                      <p class="clearfix">
+                        <span class="float-left">
+                          Area name
+                        </span>
+                        <span class="float-right text-muted">
+                          {% for val in c1 %}
+                              {{val.area_id}}
+                          {% endfor %}
+                        </span>
+                      </p>
+
+                      <p class="clearfix">
+                        <span class="float-left">
+                          Company name
+                        </span>
+                        <span class="float-right text-muted">
+                          {% for val in c1 %}
+                              {{val.company_id}}
+                          {% endfor %}
+                        </span>
+                      </p>
+
+                    </div>
+                  </div>
+
+
+                </div>
+
+              </div>
+
+              <div class="col-12 col-md-12 col-lg-8">
+                <div class="card">
+                  <div class="padding-20">
+                    <ul class="nav nav-pills mb-1" id="myTab2" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link " id="profile-tab1" data-toggle="tab" href="#settings" role="tab"
+                           aria-selected="False">Edit Profile</a>
+                      </li>
+                    </ul>
+                    <div class="tab-content tab-bordered" id="myTab3Content">
+
+                      <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="profile-tab1">
+                        <form method="post" class="needs-validation" action="/update_profile/" >
+                            {% csrf_token %}
+                          <div class="card-header">
+                            <h4>Edit Profile</h4>
+                          </div>
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="form-group col-md-6 col-12">
+                                <label>Admin Name</label>
+                                <input type="text" class="form-control" name="customer_name" value="{{c.customer_name}}">
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="form-group col-md-7 col-12">
+                                <label>Email</label>
+                                <input type="email" class="form-control" name="email" value="{{c.email}}">
+                                <div class="invalid-feedback">
+                                  Please fill in the email
+                                </div>
+                              </div>
+                              <div class="form-group col-md-5 col-12">
+                                <label>Password</label>
+                                <input type="text" class="form-control" name="password" value="{{c.password}}">
+                              </div>
+                              <div class="form-group col-md-5 col-12">
+                                <label>Contact</label>
+                                <input type="tel" class="form-control" name="contact" value="{{c.contact}}">
+                              </div>
+                              <div class="form-group col-md-5 col-12">
+                                <label>Addressline1</label>
+                                <input type="text" class="form-control" name="addressline1" value="{{c.addressline1}}">
+                              </div>
+                              <div class="form-group col-md-5 col-12">
+                                <label>Addressline2</label>
+                                <input type="text" class="form-control" name="addressline2" value="{{c.addressline2}}">
+                              </div>
+                              <div class="form-group col-md-5 col-12">
+                                <label>Landmark</label>
+                                <input type="tel" class="form-control" name="landmark" value="{{c.landmark}}">
+                              </div>
+                              <div class="form-group col-md-5 col-12">
+                                <label>Gender</label>
+                                <input type="tel" class="form-control" name="gender" value="{{c.gender}}">
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <label>Area Name</label>
+                              <div class="form-group">
+
+                                <select class="form-control select2" name="area_id">
+                                {% for val in area %}
+                                  <option value="{{val.area_id}}">{{val.area_name}}</option>
+                                {% endfor %}
+
+                                </select>
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <label>Company Name</label>
+                              <div class="form-group">
+
+                                <select class="form-control select2" name="company_id">
+                                {% for val in cm %}
+                                  <option value="{{val.company_id}}">{{val.company_name}}</option>
+                                {% endfor %}
+
+                                </select>
+                              </div>
+                            </div>
+
+                          </div>
+
+                          <div class="card-footer text-right">
+                            <button class="btn btn-primary">Save Changes</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+{% endblock %}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+{% extends 'header_footer.html' %}
+{% load static %}
+
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>    <div class="page-content bg-white">
+        <!-- inner page banner -->
+        <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({% static 'images/bg1.jpg' %});">
+            <div class="container">
+                <div class="dez-bnr-inr-entry">
+                    <h1 class="text-white">Product list </h1>
+                </div>
+            </div>
+        </div>
+        <!-- inner page banner END -->
+        <!-- Breadcrumb row -->
+        <div class="breadcrumb-row">
+            <div class="container">
+                <ul class="list-inline">
+                    <li><a href="/client/Home/">Home</a></li>
+                    <li>Product</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Breadcrumb row END -->
+        <!-- contact area -->
+        <div class="section-body">
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Product list</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-striped ">
+                            <thead>
+                                                            <tr align="center"  bgcolor="#D3D3D3" nowrap="nowrap">
+                                                                <th nowrap="nowrap">ID</th>
+                                                                <th nowrap="nowrap">Product Name</th>
+                                                                <th nowrap="nowrap">QTY</th>
+
+                                                                <th nowrap="nowrap">Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody >
+                                                             {% for c in b1 %}
+                                                        <tr align="center"  nowrap="nowrap" bgcolor="#FFFAFA">
+                                                            <td>{{c.booking_id_id}}</td>
+                                                            <td nowrap="nowrap">{{c.product_id.product_name}}</td>
+                                                            <td nowrap="nowrap">{{c.qty}}</td>
+                                                            <td nowrap="nowrap"><a href="/client/clientdeleteproduct/{{c.booking_detail_id}}"><img src="{% static 'images/image/delete.png' %}" height="30" width="30"></a></td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                     <a href="/client/client_bookingdetails" class="site-button skew-secondry">view Booking-details</a>
+
+                                                 </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+        </div>
+        <!-- contact area  END -->
+    </div>
+        <!-- contact area  END -->
+
+</div>
+    <!-- Content END-->
+</div>
+{% endblock %}
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% extends 'header_footer.html' %}
+{% load static %}
+
+{% block content%}
+
+    <!-- Content -->
+    <div class="page-content">
+        <!-- inner page banner -->
+        <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({%static 'images/contact-details.jpg' %});">
+            <div class="container">
+                <div class="dez-bnr-inr-entry">
+                    <h1 class="text-white">Contact</h1>
+                </div>
+            </div>
+        </div>
+        <!-- inner page banner END -->
+        <!-- Breadcrumb row -->
+        <div class="breadcrumb-row">
+            <div class="container">
+                <ul class="list-inline">
+                    <li><a href="/client/Home/">Home</a></li>
+                    <li>Contact us 4</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Breadcrumb row END -->
+        <!-- contact area -->
+        <div class="content-area">
+            <div class="container">
+                <!-- info part start -->
+                <h4>Contact Info</h4>
+                {% for val in c1%}
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 m-b30">
+                        <div class="icon-bx-wraper center bg-white p-a30">
+                            <div class="icon-bx-sm bg-primary m-b20"> <a href="javascript:void(0);" class="icon-cell"><i class="fa fa-phone"></i></a> </div>
+                            <div class="icon-content">
+
+                                <h4 class="m-b10">{{val.company_name}}</h4>
+                                <p>{{val.contact}}</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 m-b30">
+                        <div class="icon-bx-wraper center bg-white p-a30">
+                            <div class="icon-bx-sm bg-primary m-b20"> <a href="javascript:void(0);" class="icon-cell"><i class="fa fa-envelope"></i></a> </div>
+                            <div class="icon-content">
+
+                                <h4 class="m-b10">email</h4>
+                                <p>{{val.email}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 m-b30">
+                        <div class="icon-bx-wraper center bg-white p-a30">
+                            <div class="icon-bx-sm bg-primary m-b20"> <a href="javascript:void(0);" class="icon-cell"><i class="fa fa-map-marker"></i></a> </div>
+                            <div class="icon-content">
+                                <h4 class="m-b10">Address</h4>
+                                <p>{{val.addressline1}},{{val.addressline2}},{{val.landmark}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- info part END -->
+                <div class="row">
+                    <!-- Contact form start -->
+
+                    <!-- Contact form END -->
+                    <!-- Map part start -->
+                    <div class="col-lg-12">
+                        <h4>Our Location</h4>
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3669.517577220784!2d72.58160291428422!3d23.11474941867866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e824c3c47f81f%3A0xf47f7df7c6023831!2sOrange%20Mall%2C%20Near%20Petrol%20Pump%2C%20Near%20Chand%20Kheda%20Bus%20Stop%2C%20Opposite%20Chand%20Kheda%20Cross%20Road%2C%20Sakal%2059th%20St%2C%20Nigam%20Nagar%2C%20Chandkheda%2C%20Ahmedabad%2C%20Gujarat%20382424!5e0!3m2!1sen!2sin!4v1624518919101!5m2!1sen!2sin" width="1200" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                    <!-- Map part start -->
+                </div>
+            </div>
+        </div>
+        <!-- contact area  END -->
+    </div>
+    <!-- Content END-->
+{% endblock %}

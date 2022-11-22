@@ -1,0 +1,69 @@
+{% extends 'header-footer.html' %}
+{% load static %}
+{% block content %}
+<!-- Content -->
+    <div class="page-content">
+        <!-- inner page banner -->
+        <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({% static 'images/background/bg4.jpg' %});">
+            <div class="container">
+                <div class="dez-bnr-inr-entry">
+                    <h1 class="text-white">Package</h1>
+                </div>
+            </div>
+        </div>
+        <!-- inner page banner END -->
+        <!-- Breadcrumb row -->
+        <div class="breadcrumb-row">
+            <div class="container">
+                <ul class="list-inline">
+                    <li><a href="/client/Home/">Home</a></li>
+                    <li>Package Details</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Breadcrumb row END -->
+        <div class="content-area">
+            <!-- Left & right section start -->
+            <div class="container">
+                <!-- Pricing table-1 Columns 3 with gap -->
+                <div class="p-a30 bg-white m-b30">
+                    <div class="section-head">
+                        <h2 class="text-uppercase">Package Plan</h2>
+                    </div>
+
+                    <div class="section-content">
+                        <div class="pricingtable-row m-b30">
+                            <div class="row">
+                                {% for val in tp %}
+                                <div class="col-md-4 col-lg-4">
+                                    <div class="pricingtable-wrapper">
+                                        <div class="pricingtable-inner">
+                                            <div class="pricingtable-price"> <span class="pricingtable-bx">{{val.Amount}}</span> </div>
+                                            <div class="pricingtable-title bg-primary">
+                                                <h2>{{val.TransportCompany_pk_name}}</h2>
+                                            </div>
+                                            <ul class="pricingtable-features">
+                                                <li><i class="fa fa-check"></i> {{val.description}} </li>
+
+                                            </ul>
+                                            <button type="submit" class="site-button skew-secondry" >Booking</button>
+
+                                            <br/>
+                                            <br/>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                <div class="form-group text-left m-0"><a class="site-button outline gray" href="/Tc/trans_registration/">Back</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Pricing table-1 Columns 3 with gap END -->
+            </div>
+            <!-- Left & right section  END -->
+        </div>
+    </div>
+{% endblock %}

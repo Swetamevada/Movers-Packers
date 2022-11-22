@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% extends 'header_footer.html' %}
+{% load static %}
+
+{% block content%}
+    <!-- Content -->
+    <div class="page-content bg-white">
+        <!-- inner page banner -->
+        <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({% static 'images/vehicle.jpg' %});">
+            <div class="container">
+                <div class="dez-bnr-inr-entry">
+                    <h1 class="text-white">Vehicles</h1>
+                </div>
+            </div>
+        </div>
+        <!-- inner page banner END -->
+        <!-- Breadcrumb row -->
+        <div class="breadcrumb-row">
+            <div class="container">
+                <ul class="list-inline">
+                    <li><a href="/client/Home">Home</a></li>
+                    <li>Vehicles</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Breadcrumb row END -->
+        <!-- contact area -->
+        <div class="section-full p-t70 p-b40">
+            <!-- Services  -->
+            <div class="container">
+                <div class="row">
+                    {% for val in v1 %}
+                    <div class="col-lg-4 col-md-3 col-sm-6 m-b30">
+                        <div class="dez-box">
+                            <div class="dez-media"> <a href="javascript:void(0);"><img src="{% static 'images/' %}{{val.Vehicle_category_id.vehicle_image}}" height="100" width="100"/></a> </div>
+                            <div class="dez-info p-a30 border-1">
+                                <h4 class="dez-title m-t0"><a href="javascript:void(0);">{{val.Vehicle_category_id.vehicle_category_name}}</a></h4>
+                                <p>{{val.Vehicle_category_id.vehicle_category_name}}</p>
+                                <form method="post" action="/client/client_booking/{{p1}}/{{t1}}/{{val.Vehicle_category_id_id}}" >
+                                {% csrf_token %}
+                                   <!-- <input type="hidden" name="vehicle_category_id" value="{{val.vehicle_category_id}}">
+                                <input type="hidden" name="package_id" value="{{p1}}">
+                                <input type="hidden" name="TransportCompany_id" value="{{t1}}">-->
+
+                                 <button type="submit" class="site-button skew-secondry">Booking</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+
+
+                </div>
+            </div>
+            <!-- Services END -->
+        </div>
+        <!-- contact area END -->
+    </div>
+
+    <!-- Content END-->
+{% endblock %}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% extends 'header.html' %}
+{% load static %}
+<!-- Mirrored from radixtouch.in/templates/snkthemes/grexa/source/light/export-table.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Dec 2020 13:51:28 GMT -->
+{% block content%}
+<head>
+<script>
+    function fetch_data()
+    {
+        var value = $("#TransportCompany_name").val();
+        alert(value);
+        $.ajax({
+            url:"/report_bk/",
+            type:"POST",
+            data:{'TransportCompany':value},
+            success:function(data)
+            {
+                alert(data);
+                $("#load1").html(data);
+            }
+        });
+
+    }
+</script>
+</head>
+<div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1> Report</h1>
+            <div class="section-header-breadcrumb">
+              <div class="breadcrumb-item active"><a href="/index/">Dashboard</a></div>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>TransportCompany Wise Driver</h4>
+                  </div>
+                  <div class="card-body">
+                  <form  name="r1" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label>Transportcompany name:</label>
+                        <div class="form-group">
+                        <label>
+
+                           <select class="form-control" name="TransportCompany_name" id="TransportCompany_name" >
+                              {% for data in t1 %}
+                                <option value="{{data.TransportCompany_id}}">{{data.TransportCompany_name}}</option>
+                              {% endfor %}
+                          </select>
+                        </label>
+                          <button class="btn btn-primary" type="submit">Search</button></b>
+
+                        </div>
+                    </div>
+                  </form>
+
+
+                    <div class="table-responsive">
+                     <table class="table table-striped table-hover" id="tableExport" style="width:100%;">
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Contact</th>
+                            <th>Address</th>
+                            <th>Licence Image</th>
+                            <th>TransportCompany Name</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for c in dr %}
+                          <tr>
+                            <td>{{c.driver_id}}</td>
+                            <td>{{c.driver_name}}</td>
+                            <td>{{c.email}}</td>
+                            <td>{{c.contact}}</td>
+                            <td>{{c.addressline1}},{{c.addressline2}},{{c.landmark}}</td>
+                            <td><img src="{% static 'image/' %}{{c.license_image}}" height="100" width="100"/></td>
+                            <td>{{c.TransportCompany_id.TransportCompany_name}}</td>
+                          </tr>
+                        {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+{% endblock %}
+
+
+<!-- Mirrored from radixtouch.in/templates/snkthemes/grexa/source/light/export-table.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Dec 2020 13:52:20 GMT -->

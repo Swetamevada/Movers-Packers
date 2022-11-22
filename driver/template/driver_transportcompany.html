@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% extends 'driver_header.html' %}
+{% load static %}
+
+
+<!-- Mirrored from radixtouch.in/templates/snkthemes/grexa/source/light/export-table.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Dec 2020 13:51:28 GMT -->
+{% block content%}
+      <!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Transport Company Table</h1>
+            <div class="section-header-breadcrumb">
+              <div class="breadcrumb-item active"><a href="/driver/driver_index/">Dashboard</a></div>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Transport Company Table</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-striped table-hover" id="tableExport" style="width:100%;">
+                        <thead>
+                          <tr  nowrap="nowrap">
+                            <th>ID</th>
+                            <th nowrap="nowrap">Transportcompany image</th>
+                            <th>Name</th>
+                            <th>Owner_name</th>
+                            <th>Email</th>
+                            <th>Contact</th>
+                            <th>Address</th>
+                            <th>Licence_no</th>
+                            <th nowrap="nowrap">Area Name</th>
+                            <th>Transport company Package Name</th>
+                            <th>Register start date</th>
+                            <th>Register End date</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for c in tc %}
+                          <tr>
+                            <td align="center" nowrap="nowrap">{{c.TransportCompany_id}}</td>
+                            <td><img src="{% static 'image/' %}{{ c.TransportCompany_image }} " alt="image not found" height="100" width="100"/></td>
+                            <td nowrap="nowrap">{{c.TransportCompany_name}}</td>
+                            <td nowrap="nowrap">{{c.owner_name}}</td>
+                            <td nowrap="nowrap">{{c.email}}</td>
+                            <td nowrap="nowrap">{{c.contact}}</td>
+                            <td nowrap="nowrap">{{c.addressline1}},{{c.addressline2}},{{c.landmark}}</td>
+                            <td nowrap="nowrap">{{c.licence_no}}</td>
+                            <td nowrap="nowrap">{{c.area_id.area_name}}</td>
+                            <td>{{c.TransportCompany_pk_id.TransportCompany_pk_name}}</td>
+                            <td>{{c.reg_start_date}}</td>
+                            <td>{{c.reg_end_date}}</td>
+                          </tr>
+                        {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+{% endblock %}
+
+<!-- Mirrored from radixtouch.in/templates/snkthemes/grexa/source/light/export-table.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Dec 2020 13:52:20 GMT -->

@@ -1,0 +1,49 @@
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% for c in bk %}
+
+                          <tr>
+                            <td>{{c.booking_id}}</td>
+                            <td>{{c.date}}</td>
+                            <td>{{c.Transport_date}}</td>
+                            <td>{{c.from_location}}</td>
+                            <td>{{c.to_location}}</td>
+                            <td>{{c.quotation_amount}}</td>
+                            <td>{{c.TransportCompany_id.TransportCompany_name}}</td>
+                            <td>{{c.customer_id.customer_name}}</td>
+                            <td>{{c.vehicle_id.vehicle_category_name}}</td>
+                            <td>{{c.package_id.package_name}}</td>
+                            <td>{{c.driver_id.driver_name}}</td>
+                            <td>{{c.payment_status}}</td>
+                              {% if c.booking_status == '0' %}
+                              <td>Quotation</td>
+                              {% elif c.booking_status == '1' %}
+                              <td>Booking</td>
+                              {% else %}
+                              <td> reject</td>
+                              {% endif %}
+                            {% if c.booking_status2 == '0' %}
+                              <td><a href="/admin_accept_booking/{{c.booking_id}}"><img src="{% static 'images/image/accept.png' %}" height="40" width="40"></a>
+                                  <a href="/admin_reject_booking/{{c.booking_id}}"><img src="{% static 'images/image/reject.png' %}" height="40"width="40"></a></td>
+                            {% elif c.booking_status2 == '1' %}
+                              <td>Accept</td>
+                            {% elif c.booking_status2 == '3' %}
+                                <td></td>
+                             {% else %}
+                                <td>reject</td>
+
+                            {% endif %}
+
+
+                            <td><a href="/editquotation/{{c.booking_id}}">quotation</a>
+                              <a href="/updatetdriver/{{c.booking_id}}">driver</a>
+                            </td>
+
+                          </tr>
+                        {% endfor %}
+</body>

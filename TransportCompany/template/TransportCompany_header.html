@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <title>Movers & Packers</title>
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="{% static 'assets/css/app.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/bundles/jqvmap/dist/jqvmap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/bundles/weather-icon/css/weather-icons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/bundles/weather-icon/css/weather-icons-wind.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/bundles/bootstrap-social/bootstrap-social.css' %}">
+
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="{% static 'assets/bundles/datatables/datatables.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/components.css' %}">
+  <!-- Custom style CSS -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.7.0/parsley.min.js"></script>
+  <link rel="stylesheet" href="{% static 'parsley.css' %}">
+  <link rel='shortcut icon' type='image/x-icon' href="{% static 'image/favicon.png' %}" />
+</head>
+
+<body>
+  <div class="loader"></div>
+  <div id="app">
+    <div class="main-wrapper main-wrapper-1">
+      <div class="navbar-bg"></div>
+      <nav class="navbar navbar-expand-lg main-navbar">
+        <div class="form-inline mr-auto">
+          <ul class="navbar-nav mr-3">
+            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg collapse-btn"><i
+                  class="fas fa-bars"></i></a></li>
+            <li>
+            <div class="search-group">
+            </div>
+            </li>
+          </ul>
+        </div>
+        <ul class="navbar-nav navbar-right">
+        <li><a href="#" class="nav-link nav-link-lg fullscreen-btn">
+                <i class="fas fa-expand"></i>
+              </a>
+            </li>
+
+
+          <li class="dropdown"><a href="#" data-toggle="dropdown"
+              class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+              <img alt="image" src="{% static 'image/user4.png' %}" class="user-img-radious-style">
+              <span class="d-sm-none d-lg-inline-block"></span></a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <div class="dropdown-title">Hello</div>
+              <a href="/Tc/transcomp_profile/" class="dropdown-item has-icon">
+                <i class="far fa-user"></i> Profile
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="/Tc/trans_logout/" class="dropdown-item has-icon text-danger">
+                <i class="fas fa-sign-out-alt"></i> Logout
+              </a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="main-sidebar sidebar-style-2">
+        <aside id="sidebar-wrapper">
+          <div class="sidebar-brand">
+            <a href="index.html">
+            <div class="logo-footer"> <img alt="image" src="{% static 'image/tcadmin2.png' %}" height="40"   /> </div>
+            </a>
+          </div>
+          <ul class="sidebar-menu">
+
+            <li><a class="nav-link" href="/Tc/transportcompany_index/"><i class="fas fa-home"></i><span>Dashboard
+                  </span></a></li>
+              <!--<li><a class="nav-link" href="/Tc/tc_company/"><i class="fab fa-buromobelexperte"></i><span>Company</span></a></li>-->
+
+
+                <li><a class="nav-link" href="/Tc/tc_customer/"><i class="fab fa-buromobelexperte"></i><span>Customer</span></a></li>
+                <!--<li><a class="nav-link" href="/Tc/tc_transportcompany/"><i class="fab fa-buromobelexperte"></i><span>TransportCompany</span></a></li>-->
+               <li><a class="nav-link" href="/Tc/trans_driver/"><i class="fab fa-buromobelexperte"></i><span>Driver</span></a></li>
+
+
+              <li><a class="nav-link" href="/Tc/tc_service_category/"><i class="fab fa-buromobelexperte"></i><span>Service Category</span></a></li>
+              <li><a class="nav-link" href="/Tc/tc_vehicle_category/"><i class="fab fa-buromobelexperte"></i><span>Vehicle Category</span></a></li>
+               <li><a class="nav-link" href="/Tc/tc_transport_service_category/"><i class="fab fa-buromobelexperte"></i><span>Service Category Detail</span></a></li>
+              <li><a class="nav-link" href="/Tc/tc_transport_vehicle_category/"><i class="fab fa-buromobelexperte"></i><span>Vehicle Category Detail</span></a></li>
+
+
+              <li><a class="nav-link" href="/Tc/tras_booking/"><i class="fab fa-buromobelexperte"></i><span>Booking</span></a></li>
+              <li><a class="nav-link" href="/Tc/trans_product/"><i class="fab fa-buromobelexperte"></i><span>Product</span></a></li>
+              <li><a class="nav-link" href="/Tc/trans_booking_detail/"><i class="fab fa-buromobelexperte"></i><span>Booking Detail</span></a></li>
+
+
+              <!--<li><a class="nav-link" href="/Tc/tc_package/"><i class="fab fa-buromobelexperte"></i><span>Register Package</span></a></li>-->
+              <li><a class="nav-link" href="/Tc/tras_package/"><i class="fab fa-buromobelexperte"></i><span>Package</span></a></li>
+
+
+              <li><a class="nav-link" href="/Tc/tras_feedback/"><i class="fab fa-buromobelexperte"></i><span>Feedback</span></a></li>
+              <li><a class="nav-link" href="/Tc/tras_gallery/"><i class="fab fa-buromobelexperte"></i><span>Gallery</span></a></li>
+
+
+			  <li><a class="nav-link" href="/Tc/trans_report2/"><i class="fab fa-buromobelexperte"></i><span>Report Date</span></a></li>
+			  <li><a class="nav-link" href="/Tc/trans_report3/"><i class="fab fa-buromobelexperte"></i><span>Customer Count</span></a></li>
+             <li><a class="nav-link" href="/Tc/trans_report6/"><i class="fab fa-buromobelexperte"></i><span>Area Wise Customer</span></a></li>
+            <li><a class="nav-link" href="/Tc/quotationreport/"><i class="fab fa-buromobelexperte"></i><span>Quotation Report</span></a></li>
+            <li><a class="nav-link" href="/Tc/cancellationreport/"><i class="fab fa-buromobelexperte"></i><span>Cancellation Report</span></a></li>
+            <li><a class="nav-link" href="/Tc/paymentreport/"><i class="fab fa-buromobelexperte"></i><span>Payment Report</span></a></li>
+
+
+
+          </ul>
+        </aside>
+      </div>
+        {% block content%}
+
+
+
+
+        {% endblock %}
+
+      </div>
+      <footer class="main-footer">
+        <div class="footer-left">
+          Copyright &copy; 2020 <div class="bullet"></div>Design By <a href="#">Movers&Packers</a>
+        </div>
+        <div class="footer-right">
+        </div>
+      </footer>
+    </div>
+  </div>
+  <!-- General JS Scripts -->
+  <script src="{% static 'assets/js/app.min.js' %}"></script>
+  <!-- JS Libraies -->
+  <script src="{% static 'assets/bundles/chartjs/chart.min.js' %}"></script>
+  <script src="{% static 'assets/bundles/apexcharts/apexcharts.min.js' %}"></script>
+
+  <!-- Page Specific JS File -->
+  <script src="{% static 'assets/js/page/index2.js' %}"></script>
+  <script src="{% static 'assets/bundles/datatables/datatables.min.js' %}"></script>
+  <script src="{% static 'assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js' %}"></script>
+  <script src="{% static 'assets/bundles/datatables/export-tables/dataTables.buttons.min.js' %}"></script>
+  <script src="{% static 'assets/bundles/datatables/export-tables/buttons.flash.min.js' %}"></script>
+  <script src="{% static 'assets/bundles/datatables/export-tables/jszip.min.js' %}"></script>
+  <script src="{% static 'assets/bundles/datatables/export-tables/pdfmake.min.js' %}"></script>
+  <script src="{% static 'assets/bundles/datatables/export-tables/vfs_fonts.js' %}"></script>
+  <script src="{% static 'assets/bundles/datatables/export-tables/buttons.print.min.js' %}"></script>
+  <script src="{% static 'assets/js/page/datatables.js' %}"></script>
+  <!-- Template JS File -->
+  <script src="{% static 'assets/js/scripts.js' %}"></script>
+
+</body>
+
+</html>

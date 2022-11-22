@@ -1,0 +1,250 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content%}
+ <div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Dashboard</h1>
+          </div>
+          <div class="row">
+              <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="card card-statistic-2">
+                  <div class="card-icon shadow-primary bg-hibiscus">
+                      <img src="{% static 'image/userd.jpg' %}" height="50" >
+                    <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                  </div>
+                  <div class="card-body card-type-3">
+                  	<div class="row">
+                    	<div class="col">
+                      		<h6 class="text-muted mt-2 mb-1">customer</h6>
+                      		<h6 class="font-weight-bold mb-0">{{user}}</h6>
+                    	</div>
+                  	</div>
+                   </div>
+
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="card card-statistic-2">
+
+                  <div class="card-icon shadow-primary bg-hibiscus">
+                      <img src="{% static 'image/transportcom.png' %}" height="60" >
+                    <i class="fab fa-first-order"></i>
+                  </div>
+                  <div class="card-body card-type-3">
+                  	<div class="row">
+                    	<div class="col">
+                      		<h6 class="text-muted mt-2 mb-1">TransportCompany</h6>
+                      		<h6 class="font-weight-bold mb-0">{{tc}}</h6>
+                    	</div>
+                  	</div>
+                   </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="card card-statistic-2">
+
+                  <div class="card-icon shadow-primary bg-hibiscus">
+                      <img src="{% static 'image/booking.png' %}" height="50" >
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                  </div>
+                  <div class="card-body card-type-3">
+                  	<div class="row">
+                    	<div class="col">
+                      		<h6 class="text-muted mt-2 mb-1">Booking</h6>
+                      		<h6 class="font-weight-bold mb-0">{{booking}}</h6>
+                    	</div>
+                  	</div>
+                   </div>
+                </div>
+              </div>
+            </div>
+         <div class="row">
+            <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4>TransportCompany Booking</h4>
+                </div>
+
+					{% include 'base.html' %}
+
+							<script>
+								{% block jquery %}
+
+								var endpoint = '/api/chart/data/'
+								var defaultData = []
+								var labels = [];
+								$.ajax({
+									method: "GET",
+									url: endpoint,
+									success: function(data) {
+										labels = data.labels
+										defaultData = data.default
+										setChart()
+									},
+									error: function(error_data) {
+										console.log("error")
+										console.log(error_data)
+									}
+								})
+
+								function setChart() {
+									var ctx = document.getElementById("myChart");
+									var ctx2 = document.getElementById("myChart2");
+									var myChart = new Chart(ctx2, {
+										type: 'bar',
+										data: {
+											labels: labels,
+											datasets: [{
+												label: 'Total Booking',
+												data: defaultData,
+												backgroundColor: [
+													'rgba(255, 99, 132, 0.2)',
+													'rgba(54, 162, 235, 0.2)',
+													'rgba(255, 206, 86, 0.2)',
+													'rgba(75, 192, 192, 0.2)',
+													'rgba(153, 102, 255, 0.2)',
+													'rgba(255, 159, 64, 0.2)'
+												],
+												borderColor: [
+													'rgba(255,99,132,1)',
+													'rgba(54, 162, 235, 1)',
+													'rgba(255, 206, 86, 1)',
+													'rgba(75, 192, 192, 1)',
+													'rgba(153, 102, 255, 1)',
+													'rgba(255, 159, 64, 1)'
+												],
+												borderWidth: 1
+											}]
+										},
+										options: {
+											scales: {
+												yAxes: [{
+													ticks: {
+														beginAtZero: true
+													}
+												}]
+											}
+										}
+									});
+
+									var myChart = new Chart(ctx, {
+										type: 'polarArea',
+										data: {
+											labels: labels,
+											datasets: [{
+												label: '# of Votes',
+												data: defaultData,
+												backgroundColor: [
+													'rgba(255, 99, 132, 0.2)',
+													'rgba(54, 162, 235, 0.2)',
+													'rgba(255, 206, 86, 0.2)',
+													'rgba(75, 192, 192, 0.2)',
+													'rgba(153, 102, 255, 0.2)',
+													'rgba(255, 159, 64, 0.2)'
+												],
+												borderColor: [
+													'rgba(255,99,132,1)',
+													'rgba(54, 162, 235, 1)',
+													'rgba(255, 206, 86, 1)',
+													'rgba(75, 192, 192, 1)',
+													'rgba(153, 102, 255, 1)',
+													'rgba(255, 159, 64, 1)'
+												],
+												borderWidth: 1
+											}]
+										},
+										options: {
+											scales: {
+												yAxes: [{
+													ticks: {
+														beginAtZero: true
+													}
+												}]
+											}
+										}
+									});
+								}
+								// var ctx = document.getElementById("myChart");
+
+
+
+								{% endblock %}
+							</script>
+
+
+
+              </div>
+            </div>
+          </div>
+          
+
+             <div class="col-lg-8 col-md-12 col-sm-12">
+             <div class="card">
+                <div class="card-header">
+                  <h4>Recent Client Feedback</h4>
+                </div>
+                 {% for f1 in f %}
+                <div class="card-body">
+                  <ul class="list-unstyled user-progress list-unstyled-border list-unstyled-noborder mt-2">
+                    <li class="media">
+                        <img alt="image" class="mr-3 image-square" width="50" src="{% static 'image/user4.png' %}">
+                      <div class="media-body">
+                        <div class="media-title">{{f1.customer_id.customer_name}}</div>
+                        <div>
+                        </div>
+                        <div class="text-muted">{{f1.description}}</div>
+                      </div>
+                      <div class="media-cta">
+                        <div class="text-job text-muted">{{f1.date}}</div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                 {% endfor %}
+              </div>
+            </div>
+
+
+           <div class="card">
+                <div class="card-header">
+                  <h4>Latest Transcation</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive mt-1">
+                    <table class="table table-striped">
+                      <tr>
+                          <th>Date</th>
+                          <th>Transport Date</th>
+                          <th>From Location</th>
+                          <th>To Location</th>
+                          <th>Package Name</th>
+                          <th>Customer Name</th>
+                          <th>TrnasportCompany Name</th>
+                          <th>Quotation status</th>
+                          <th>Booking status</th>
+                          <th>Action</th>
+                      </tr>
+                         {% for c in b1 %}
+                      <tr>
+                            <td>{{c.date}}</td>
+                            <td>{{c.Transport_date}}</td>
+                            <td>{{c.from_location}}</td>
+                            <td>{{c.to_location}}</td>
+                            <td>{{c.package_id.package_name}}</td>
+                            <td>{{c.customer_id.customer_name}}</td>
+                            <td>{{c.TransportCompany_id.TransportCompany_name}}</td>
+                            <td class="badge badge-success badge-shadow">{{c.booking_status}}</td>
+                            <td>{{c.booking_status2}}</td>
+                           <td><div class="media-cta-square"><a href="/booking/" class="btn btn-outline-primary">Detail</a></div></td>
+                      </tr>
+                        {% endfor %}
+
+
+                    </table>
+                  </div>
+                </div>
+              </div>
+        </section>
+            </div>
+   {% endblock %}

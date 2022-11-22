@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+{% extends 'header_footer.html' %}
+{% load static %}
+
+{% block content %}
+ <!-- Request A Quote -->
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<head>
+
+</head>
+<body>
+
+         <!-- Content -->
+    <div class="page-content">
+        <!-- inner page banner -->
+        <!-- inner page banner END -->
+        <!-- Breadcrumb row -->
+        <div class="breadcrumb-row">
+            <div class="container">
+                <ul class="list-inline">
+                    <li><a href="index.html">Home</a></li>
+                    <li>Contact us</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Breadcrumb row END -->
+        <!-- contact area -->
+        <div class="content-area">
+            <div class="container">
+                <div class="row">
+                    <!-- Left part start -->
+                    <div class="col-xl-9 col-lg-8">
+                        <div class="dzFormMsg"></div>
+                        <div class="p-a30 bg-white clearfix m-b30">
+							<h3>payment</h3>
+                                <input type="hidden" value="Contact" name="dzToDo" >
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="input-group">
+
+                                                <label>Date:
+
+                                                <input name="date" type="date" class="form-control" required >
+                                                </label>
+                                            </div>
+                                            <div class="input-group">
+
+                                                <label>Transport Company:
+
+                                                <input name="date" type="text" class="form-control" required >
+                                                </label>
+                                            </div>
+                                               <div class="input-group">
+
+                                                <label>Amount:
+
+                                                <input name="date" type="text" class="form-control" required >
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <u><h4>Payment By :</h4></u><br>
+                                        <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="headingThree">
+                                         <h4 class="panel-title">
+                                        <a href="/client/cash/{{bid}}">Cash Payment </a>
+                                        </h4>
+                                        </div>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading" role="tab" id="headingThree">
+                                                <h4 class="panel-title">
+                                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                    PayPal Payment
+                                                        </a>
+                                                </h4>
+                                            </div>
+
+
+                                    </div>
+                                     <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+
+                        <input type="hidden" name="business" value="drashtipateldtak46@gmail.com">
+
+                        <!-- Specify a Buy Now button. -->
+                        <input type="hidden" name="cmd" value="_xclick">
+
+                        <!-- Specify details about the item that buyers will purchase. -->
+                        <input type="hidden" name="item_name" value="{{request.session.name}}">
+                        <input type="hidden" name="amount" value="{{amt}}">
+                          <input type="hidden" name="currency_code" value="INR">
+
+                       <!-- Specify URLs -->
+                       <input type='hidden' name='cancel_return' value='http://127.0.0.1:8000/Customer/cancel'>
+
+                        <input type='hidden' name='return' value='http://127.0.0.1:8000/Customer/success/{{oid}}'>
+
+                        <!-- Display the payment button. -->
+                        <input type="image" name="submit" border="0"
+                        src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" alt="PayPal - The safer, easier way to pay online">
+                        <img alt="" border="0" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
+                    </form>
+
+                        </div>
+                    </div>
+                    <!-- Left part END -->
+                    <!-- right part start -->
+
+                    <!-- right part END -->
+                </div>
+            </div>
+        </div>
+   {% endblock %}

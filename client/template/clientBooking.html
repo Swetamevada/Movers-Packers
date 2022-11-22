@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+{% extends 'header_footer.html' %}
+{% load static %}
+
+{% block content %}
+ <!-- Request A Quote -->
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<script>
+    function tdate()
+    {
+        var today = new Date();
+        var Transport_date = document.getElementById("Transport_date").value;
+
+        if( (new Date(today).getTime() >= new Date(Transport_date).getTime()))
+        {
+            alert("please valide Transport date ");
+            document.getElementById("f1").reset();
+            return false;
+        }
+        else
+        {
+
+        }
+    }
+
+</script>
+
+        <div class="section-full text-white bg-img-fix p-t70 p-b40 overlay-black-middle " style="background-image:url({% static 'images/bg2.jpg' %});">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-left">
+                            <h3 class="h3">Booking</h3>
+                            <div class="dez-separator bg-primary"></div>
+
+                        </div>
+                        <div class="p-t10 p-b20 clearfix">
+                            <form method="post" class="" id="f1" action="/client/client_addbooking/{{p.package_id}}/{{t.TransportCompany_id}}/{{v.vehicle_category_id}}" >
+                                {% csrf_token %}
+                                <input type="hidden" value="Appoinment" name="dzToDo" >
+                                <div class="row">
+                                     <div class="col-lg-6 col-md-6 col-sm-6">
+                                     <label>From Location</label>
+                                          <select class="form-control select2" name="from_location">
+                                        {% for val in a %}
+                                           <option  value="{{val.area_name}}">{{val.area_name}}</option>
+                                        {% endfor %}
+                                          </select>
+                                    </div>
+                                     <div class="col-lg-6 col-md-6 col-sm-6">
+                                       <label>To Location</label>
+                                        <select class="form-control select2" name="to_location">
+                                        {% for val in a %}
+                                           <option  value="{{val.area_name}}">{{val.area_name}}</option>
+                                        {% endfor %}
+                                       </select>
+                                    </div>
+
+                                     <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Transport Date</label>
+                                            <input id="Transport_date" name="Transport_date"  class="form-control"  placeholder="" type="date" oninput=" return tdate();" data-parsley-required="true"  data-parsley-required-message="*This field is required it must be greater than today date">
+                                        </div>
+                                    </div>
+
+                                     <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <div class="form-group">
+                                            <label>TransportCompany Name</label>
+                                            <input name="TransportCompany_id" class="form-control" placeholder="" type="text" value="{{t.TransportCompany_name}}">
+                                        </div>
+                                    </div>
+                                     <div class="col-lg-6 col-md-6 col-sm-6">
+                                         <label>vehicle Name</label>
+                                        <div class="form-group">
+                                            <input name="vehicle_category_id" class="form-control" placeholder="" type="text" value="{{v.vehicle_category_name}}">
+                                        </div>
+                                    </div>
+                                     <div class="col-lg-6 col-md-6 col-sm-6">
+                                           <label>package name</label>
+                                        <div class="form-group">
+                                            <input name="package_id" class="form-control" placeholder="" type="text" value="{{p.package_name}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 text-center">
+                                        <div class="dzFormMsg"></div>
+                                        <button name="submit" type="submit" value="Submit" class="site-button skew-secondry">
+											<span>Submit</span>
+										</button>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</html>
+        <!-- Request A Quote End -->
+ {% endblock %}

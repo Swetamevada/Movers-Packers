@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+{% extends 'header_footer.html' %}
+{% load static %}
+
+{% block content%}
+    <!-- Content -->
+    <div class="page-content bg-white">
+        <!-- inner page banner -->
+        <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({% static 'images/mybooking.jpg' %});">
+            <div class="container">
+                <div class="dez-bnr-inr-entry">
+                    <h1 class="text-white">Booking Details</h1>
+                </div>
+            </div>
+        </div>
+        <!-- inner page banner END -->
+        <!-- Breadcrumb row -->
+        <div class="breadcrumb-row">
+            <div class="container">
+                <ul class="list-inline">
+                    <li><a href="/client/Home/">Home</a></li>
+                    <li>Booking Details</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Breadcrumb row END -->
+        <!-- contact area -->
+
+            <!-- Product details -->
+            		<div class="row m-b30">
+
+                        <div class="col-md-12 col-sm-8">
+                            <div class="section-body">
+                                <div class="row">
+                                    <div class="col-12">
+
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <div>
+
+                                                    <table border="3"  >
+                                                        <thead>
+                                                            <tr align="center"  bgcolor="#D3D3D3" nowrap="nowrap">
+
+                                                                <th nowrap="nowrap">Date</th>
+                                                                <th nowrap="nowrap">Transport Date</th>
+                                                                <th nowrap="nowrap">From_location</th>
+                                                                <th nowrap="nowrap">To_location</th>
+                                                                <th nowrap="nowrap">Vehicle Name</th>
+                                                                <th nowrap="nowrap">Package Name</th>
+                                                                <th nowrap="nowrap">Driver Name</th>
+                                                                <th nowrap="nowrap">Quotation amount</th>
+                                                                <th nowrap="nowrap">Transport Company Name</th>
+                                                                <th nowrap="nowrap">Quotation status</th>
+                                                                <th nowrap="nowrap">Booking status</th>
+                                                                <th nowrap="nowrap">Payment status</th>
+                                                                <th nowrap="nowrap">Product</th>
+                                                                <th nowrap="nowrap">Payment</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody >
+                                                       {% for c in b1 %}
+                                                           <tr align="center" style="border:1px solid black;" nowrap="nowrap" bgcolor="#FFFAFA">
+                                                            <td nowrap="nowrap">{{c.date}}</td>
+                                                            <td nowrap="nowrap">{{c.Transport_date}}</td>
+                                                            <td nowrap="nowrap">{{c.from_location}}</td>
+                                                            <td nowrap="nowrap">{{c.to_location}}</td>
+                                                            <td nowrap="nowrap">{{c.vehicle_id.vehicle_category_name}}</td>
+                                                            <td nowrap="nowrap">{{c.package_id.package_name}}</td>
+                                                            <td nowrap="nowrap">{{c.driver_id.driver_name}}</td>
+                                                            <td nowrap="nowrap">{{c.quotation_amount}}</td>
+                                                            <td nowrap="nowrap">{{c.TransportCompany_id.TransportCompany_name}}</td>
+
+                                                            {% if c.booking_status == 0 %}
+                                                                    {% if c.quotation_amount == 0 %}
+                                                                        <td>--</td>
+                                                                    {% else %}
+                                                                        <td><a href="/client/accept_booking/{{c.booking_id}}"><img src="{% static 'images/accept.png' %}" height="10" width="40"></a>
+                                                                      <a href="/client/reject_booking/{{c.booking_id}}"><img src="{% static 'images/reject.png' %}" height="10"width="40"></a></td>
+                                                                    {% endif %}
+                                                            {% elif c.booking_status == 1 %}
+                                                               <td>Accept</td>
+                                                            {% else %}
+                                                                 <td>Reject</td>
+                                                            {% endif %}
+
+                                                            {% if c.booking_status2 == '0' %}
+                                                            <td>Pending</td>
+                                                            {% elif c.booking_status2 == '1' %}
+                                                            <td>Confirmed</td>
+                                                            {% elif c.booking_status == '2' %}
+                                                            <td></td>
+                                                            {% else %}
+                                                            <td>Reject</td>
+                                                            {% endif %}
+
+                                                            {% if c.payment_status == '1' %}
+                                                            <td>Cash</td>
+                                                            {% elif c.payment_status == '2' %}
+                                                            <td>Online</td>
+                                                            {% else %}
+                                                            <td>Pending</td>
+                                                            {% endif %}
+
+                                                            <td nowrap="nowrap"><a href="/client/productview/{{c.booking_id}}">Product Detail</a></td>
+
+                                                            {% if c.booking_status2 == '1' %}
+                                                                <td><a href="/client/payment/{{c.booking_id}}">Payment</a></td>
+                                                            {% else %}
+                                                                 <td>--</td>
+                                                            {% endif %}
+                                                        </tr>
+                                                        {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+            <!-- Product details -->
+        </div>
+        <!-- contact area  END -->
+    </div>
+    <!-- Content END-->
+</div>
+{% endblock %}
+

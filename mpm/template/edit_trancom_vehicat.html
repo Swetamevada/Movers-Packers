@@ -1,0 +1,66 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content%}
+      <!-- Main Content -->
+<form method="post" name="form3" action="/update_transportcompanyvehiclecategory/{{tv.TransportCompany_Vehicle_category_id}}" data-parsley-validate="">
+  {% csrf_token %}
+      <div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Vehicle Category Detail</h1>
+            <div class="section-header-breadcrumb">
+              <div class="breadcrumb-item active"><a href="/index/">Dashboard</a></div>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="row">
+
+              <div class="col-12 col-md-12 col-lg-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Update VehicleCategory Detail</h4>
+                  </div>
+                  <div class="card-body">
+                  <div class="form-group">
+                      <label>rateperKM</label>
+                        <input type="text" class="form-control phone-number" name="rateperKM" value="{{tv.rateperKM}}" data-parsley-required="true" data-parsley-required-message="This field is required">
+                      </div>
+                  <div class="form-group">
+                    <label>Transport company name</label>
+                      <select class="form-control select2" name="TransportCompany_id">
+                        {% for val in t1 %}
+                          <option value="{{val.TransportCompany_id}}" {% if val.TransportCompany_id == tv.TransportCompany_id_id %}  selected {% endif %}>{{val.TransportCompany_name}}</option>
+                        {% endfor %}
+                      </select>
+                  </div>
+                    <div class="form-group">
+                      <label>Vehicle category name</label>
+                      <select class="form-control select2" name="Vehicle_category_id">
+                        {% for val in v1 %}
+                          <option value="{{val.vehicle_category_id}}" {% if val.vehicle_category_id == tv.Vehicle_category_id_id %} selected {% endif %}>{{val.vehicle_category_name}}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="form-group row mb-4">
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                      <div class="col-sm-12 col-md-10">
+                        <button class="btn btn-primary">Update</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              <div class="col-12 col-md-6 col-lg-6">
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+</form>
+
+{% endblock %}

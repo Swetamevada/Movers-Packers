@@ -1,0 +1,81 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content%}
+      <!-- Main Content -->
+<form method="post" name="form3" action="/update_package/{{p.package_id}}" data-parsley-validate="">
+  {% csrf_token %}
+      <div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Package</h1>
+            <div class="section-header-breadcrumb">
+              <div class="breadcrumb-item active"><a href="/index/">Dashboard</a></div>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="row">
+
+              <div class="col-12 col-md-12 col-lg-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Update Package</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="form-group">
+                      <label>package Name</label>
+                        <input type="text" class="form-control phone-number" name="package_name" value="{{p.package_name}}" data-parsley-required="true" data-parsley-required-message="This field is required">
+                      </div>
+                    <div class="form-group">
+                      <label>Amount</label>
+                        <input type="text" class="form-control phone-number" name="amount" value="{{p.amount}}" data-parsley-required="true" data-parsley-required-message="This field is required">
+                    </div>
+
+                    <div class="form-group">
+                      <label>Description</label>
+                        <input type="text" class="form-control phone-number" name="description" value="{{p.description}}" data-parsley-required="true" data-parsley-required-message="This field is required">
+                    </div>
+
+                    <div class="form-group">
+                      <label>Transport company name</label>
+                      <div class="form-group">
+
+                      <select class="form-control select2" name="TransportCompany_id">
+                        {% for val in tc %}
+                          <option value="{{val.TransportCompany_id}}" {% if val.TransportCompany_id == p.TransportCompany_id_id %} selected {% endif %}>{{val.TransportCompany_name}}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Service category name</label>
+                      <div class="form-group">
+
+                      <select class="form-control select2" name="service_category_id">
+                        {% for val in sc %}
+                          <option value="{{val.service_category_id}}" {% if val.service_category_id == p.service_category_id_id %} selected {% endif %}>{{val.service_category_name}}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    </div>
+                    <div class="form-group row mb-4">
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                      <div class="col-sm-12 col-md-10">
+                        <button class="btn btn-primary">Update</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              <div class="col-12 col-md-6 col-lg-6">
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+</form>
+
+{% endblock %}
